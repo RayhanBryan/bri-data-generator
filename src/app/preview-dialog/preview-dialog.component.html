@@ -1,0 +1,121 @@
+<div class="modal-header bg-primary text-white">
+  <h4 class="modal-title">Data Preview Database Lokal</h4>
+  <button type="button" class="btn-close" aria-label="Close" (click)="bsModalRef.hide()"></button>
+</div>
+<div class="modal-body">
+  <div *ngIf="users && users.length > 0">
+    <div class="table-responsive">
+      <table class="table table-striped table-hover">
+        <thead class="table-primary">
+          <tr>
+            <th *ngFor="let column of customFields">{{ column }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users">
+            <td *ngFor="let column of selectedColumns">{{ user[column] }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div *ngIf="!users || users.length === 0" class="alert alert-info text-center" role="alert">
+    No data available.
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" (click)="bsModalRef.hide()">Close</button>
+</div>
+
+<!-- <div class="modal-header bg-primary text-white">
+  <h4 class="modal-title">Data Preview Database Production</h4>
+  <button type="button" class="btn-close" aria-label="Close" (click)="bsModalRef.hide()"></button>
+</div>
+<div class="modal-body">
+  <div *ngIf="users && users.length > 0">
+    <div class="table-responsive">
+      <table class="table table-striped table-hover">
+        <thead class="table-primary">
+          <tr>
+            <th *ngFor="let column of customFields">{{ column }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users">
+            <td *ngFor="let column of selectedColumns">{{ user[column] }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div *ngIf="!users || users.length === 0" class="alert alert-info text-center" role="alert">
+    No data available.
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" (click)="bsModalRef.hide()">Close</button>
+</div>
+
+ data-generator.component.html -->
+
+<!-- <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-primary text-white">
+        <h4 class="modal-title">Data Preview Database Production</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="bsModalRef.hide()"></button>
+      </div>
+      <div class="modal-body">
+        <div *ngIf="users && users.length > 0">
+          <div class="table-responsive">
+            <table class="table table-striped table-hover">
+              <thead class="table-primary">
+                <tr>
+                  <th *ngFor="let column of customFields">{{ column }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let user of users">
+                  <td *ngFor="let column of selectedColumns">{{ user[column] }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div *ngIf="!users || users.length === 0" class="alert alert-info text-center" role="alert">
+          No data available.
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="bsModalRef.hide()">Close</button>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
+<!-- <h1 mat-dialog-title>Data Preview Database Lokal</h1>
+<div mat-dialog-content>
+  <div *ngIf="users && users.length > 0">
+    <div class="table-responsive">
+      <table class="table table-striped table-hover">
+        <thead class="table-primary">
+          <tr>
+            <th *ngFor="let column of customFields">{{ column }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users">
+            <td *ngFor="let column of selectedColumns">{{ user[column] }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div *ngIf="!users || users.length === 0" class="alert alert-info text-center" role="alert">
+    No data available.
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onClose()">Close</button>
+</div> -->

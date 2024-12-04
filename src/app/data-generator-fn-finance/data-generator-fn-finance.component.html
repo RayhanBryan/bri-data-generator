@@ -1,0 +1,499 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BRI Data Generator</title>
+    <link rel="stylesheet" href="/assets/css/fontawesome.min.css"> <!-- Path lokal ke CSS -->
+    <link rel="stylesheet" href="/assets/css/all.min.css"> <!-- Path lokal ke CSS -->
+
+    <style>
+  @font-face {
+  font-family: 'Font Awesome 5 Free';
+  font-style: normal;
+  font-weight: 900;
+  src: url('/assets/fonts/fa-solid-900.woff2') format('woff2'); /* Pastikan path ini benar */
+}
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f8f9fa;
+            padding-top: 60px;
+        }
+        .navbar {
+            background-color: #0033A0;
+        }
+        .navbar-brand img {
+            height: 40px;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        .btn-custom {
+            background-color: #0033A0;
+            color: white;
+            border: none;
+            transition: background-color 0.3s ease;
+        }
+        .btn-custom:hover {
+            background-color: #002776;
+        }
+        .card {
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .card-header {
+            background-color: #f6f9f6;
+            color: white;
+            border-radius: 10px 10px 0 0;
+        }
+        .table-responsive {
+            overflow-x: auto;
+        }
+        .form-control {
+            border-radius: 5px;
+            border-color: #ced4da;
+        }
+        .footer {
+            background-color: #343a40;
+            color: #fff;
+            padding: 20px 0;
+        }
+        .footer a {
+            color: #fff;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        .header img {
+            height: 50px;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        .header h1 {
+            display: inline-block;
+            vertical-align: middle;
+            color: #0033A0;
+        }
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            margin-top: 20px;
+        }
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .btn-custom {
+            background-color: #0033A0;
+            color: white;
+        }
+        .btn-custom:hover {
+            background-color: #002776;
+        }
+.hero-buttons {
+  margin-top: 10px;
+  gap: 5px;
+
+}
+
+.hero-btn {
+  margin: 10px 10px;
+  padding: 10px 20px;
+  background-color: #0033A0;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+.hero-btn:hover {
+  background-color: #3696f6;
+}
+    </style>
+</head>
+<body>
+
+  <div class="data-generator-fn-finance">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+              <img src="/assets/images/logo-bri-kecil.png" alt="Logo BRI">
+                BRI Data Generator - Finance
+            </a>
+                    </div>
+    </nav>
+
+<!-- Tombol Group -->
+<div class="container mt-5">
+  <div class="header text-center mb-4">
+      <div class="row justify-content-center mb-3">
+          <div class="col-auto">
+              <!-- Tombol Filter Tags -->
+              <button routerLink="/data-generator" class="btn btn-tag">Customers</button>
+              <button class="btn btn-tag" disabled>User Identity</button>
+              <button class="btn btn-tag" disabled>Image</button>
+              <button class="btn btn-tag" disabled>Internet</button>
+              <button class="btn btn-tag" disabled>Airports</button>
+              <button class="btn btn-tag" disabled>Commerce</button>
+          </div>
+      </div>
+
+      <!-- Tombol Add dan Import -->
+      <div class="row justify-content-center">
+        <div class="col-auto">
+          <button class="btn btn-clear" (click)="resetHalaman()">
+            Reset Halaman
+          </button>
+        </div>
+
+      </div>
+  </div>
+
+
+<style>
+/* Styling untuk tombol tag */
+.btn-tag {
+  background-color: #e8f0fe;
+  color: #1967d2;
+  border: 1px solid #cfd8dc;
+  border-radius: 20px;
+  padding: 5px 10px;
+  font-size: 14px;
+  margin-right: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-tag:hover {
+  background-color: #d0e2ff;
+}
+
+/* Styling untuk tombol Add Field */
+.btn-add-field {
+  background: linear-gradient(90deg, #59a9ff, #0996ed);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-add-field:hover {
+  background-color: #0996ed;
+}
+
+.btn-clear {
+  background: linear-gradient(90deg, #aeaeaf, #aeaeaf);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-clear:hover {
+  background-color: #0996ed;
+}
+
+/* Styling untuk tombol Import */
+.btn-import {
+  background-color: #e0f3ff;
+  color: #2b98f0;
+  border: 1px solid #b5d8ff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-import:hover {
+  background-color: #cce8ff;
+}
+</style>
+
+<div *ngIf="selectedFormat === 'csv'" class="card shadow mb-4">
+  <div class="card-header text-center">
+    <h5 class="card-title mb-0">CSV Format Content</h5>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover">
+        <thead class="table-primary">
+          <tr>
+            <th style="width: 35%;">Field Name</th>
+            <th style="width: 35%;">Type</th>
+            <th style="width: 15%;">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let key of insertFields; let i = index; trackBy: trackByIndex">
+            <td>
+              <input
+                class="form-control mb-2"
+                type="text"
+                [(ngModel)]="insertFields[i]"
+                placeholder="Masukkan nama field">
+            </td>
+            <td>
+              <select
+                class="form-select mb-2"
+                [(ngModel)]="selectedColumns[i]"
+                (ngModelChange)="updateSelectedColumns(i)">
+                <option *ngFor="let field of fields" [value]="field">{{ field }}</option>
+              </select>
+            </td>
+            <td class="text-center">
+              <button class="btn btn-danger btn-sm" (click)="removeField(key)">
+                <i class="fas fa-trash-alt"></i>
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="4">
+              <div class="d-flex justify-content-between align-items-center">
+                <button class="btn btn-add-field me-2" (click)="addField()">
+                  <i class="fas fa-plus"></i> Tambah field
+                </button>
+                <div class="d-flex">
+                  <div class="form-group me-3">
+                    <label for="limit" class="form-label mb-0">Jumlah Rows:</label>
+                    <input
+                      id="limit"
+                      [(ngModel)]="rowCount"
+                      type="number"
+                      class="form-control"
+                      placeholder="Masukkan Jumlah Data"
+                      min="1"
+                      max="100000" />
+                  </div>
+                  <div class="form-group">
+                    <label for="fileName" class="form-label mb-0">Nama File:</label>
+                    <input
+                      id="fileName"
+                      [(ngModel)]="fileName"
+                      type="text"
+                      class="form-control"
+                      placeholder="Masukkan nama file">
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
+    <div class="container my-4">
+        <div class="card shadow-lg border-0 rounded-3 mb-3">
+            <div class="card-body p-1">
+                <div class="d-flex justify-content-center mb-1">
+
+<!-- Tombol Generate CSV Data Preview  dan download -->
+<div class="btn-group mb-3 d-flex align-items-center">
+  <!-- Label for Format -->
+  <label class="me-3 fw-bold" style="font-size: 1.1rem;">Format: </label>
+
+  <!-- Dropdown for Format Selection -->
+  <select class="form-select shadow-sm me-3" [(ngModel)]="selectedFormat" style="width: 150px; padding: 6px; font-size: 1rem;">
+    <option value="csv">CSV</option>
+    <option value="sql">SQL</option>
+    <option value="excel">Excel</option>
+  </select>
+
+  <!-- Generate CSV Button -->
+  <button class="btn btn-generate-csv me-3 shadow-sm px-4" (click)="generateCSV()" style="font-size: 1rem;">
+      Generate CSV
+  </button>
+
+  <!-- Data Preview Button -->
+  <button class="btn btn-data-preview shadow-sm px-4" (click)="openDataPreviewFix1()" style="font-size: 1rem;">
+      Data Preview
+  </button>
+</div>
+
+<style>
+
+/* Styling untuk tombol Generate CSV */
+.btn-generate-csv {
+  background: linear-gradient(90deg, #28a745, #218838);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-generate-csv:hover {
+  background-color: #1e7e34;
+}
+
+/* Styling untuk tombol Data Preview */
+.btn-data-preview {
+  background: linear-gradient(90deg, #17a2b8, #138496);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-data-preview:hover {
+  background-color: #117a8b;
+}
+
+.btn-generate-csv {
+    background-color: #28a745; /* Warna hijau */
+    color: white;
+    border: none;
+}
+
+.btn-generate-csv:hover {
+    background-color: #218838; /* Warna hijau gelap saat hover */
+}
+
+.btn-data-preview {
+    background-color: #17a2b8; /* Warna biru */
+    color: white;
+    border: none;
+}
+
+.btn-data-preview:hover {
+    background-color: #138496; /* Warna biru gelap saat hover */
+}
+
+.btn-download {
+    background-color: #ffc107; /* Warna kuning */
+    color: white;
+    border: none;
+}
+
+.btn-download:hover {
+    background-color: #e0a800; /* Warna kuning gelap saat hover */
+}
+
+</style>
+ </div>
+
+<!-- spinner -->
+ <div *ngIf="loading" class="d-flex justify-content-center align-items-center" style="height: 100px;">
+    <div class="spinner-border text-primary" role="status">
+       <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- Pesan Sukses -->
+  <div #successModal class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-success text-white">
+                <h5 class="modal-title" id="successModalLabel">Success</h5>
+                <button type="button" class="btn-close" aria-label="Close" (click)="hideSuccessModal()"></button>
+            </div>
+            <div class="modal-body">
+                {{ downloadMessage }}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="hideSuccessModal()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Pesan Eror -->
+<div class="modal fade" id="noFieldsModal" tabindex="-1" aria-labelledby="noFieldsModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+          <div class="modal-header bg-danger text-white">
+              <h5 class="modal-title" id="noFieldsModalLabel">Error</h5>
+              <button type="button" class="btn-close" aria-label="Close" (click)="hideNoFieldsModal()"></button>
+          </div>
+          <div class="modal-body">
+              Please select at least one field.
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" (click)="hideNoFieldsModal()">Close</button>
+          </div>
+      </div>
+  </div>
+</div>
+</div>
+
+<!-- Header Hasil Generate -->
+<div class="bg-primary text-white p-3 mb-3">
+  <h4>Data Preview</h4>
+</div>
+
+<!-- Data Preview Table -->
+<div *ngIf="previewData.length > 0" class="table-responsive mt-4">
+  <table class="table table-striped table-hover">
+    <thead class="table-primary">
+      <tr>
+        <!-- Display headers from selectedColumns and customFields -->
+        <th *ngFor="let column of insertFields">{{ column }}</th>
+        <th *ngFor="let customField of customFields">{{ customField }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of previewData">
+        <!-- Display data from selectedColumns -->
+        <td *ngFor="let column of selectedColumns">
+          {{ row[column] !== undefined ? row[column] : '-' }}
+        </td>
+        <!-- Display data from customFields -->
+        <td *ngFor="let customField of customFields">
+          {{ row[customField] !== undefined ? row[customField] : '-' }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+
+<!-- No Data Message -->
+<div *ngIf="!previewData || previewData.length === 0" class="alert alert-info text-center" role="alert">
+  No data available.
+</div>
+<div class="d-flex justify-content-end">
+  <button class="btn btn-secondary mt-3" (click)="onClose()">Clear</button>
+</div>
+ </div>
+ </div>
+
+<!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-start">
+                    <p>&copy; 2024 BRI Data Generator. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-end">
+                    <ul class="list-inline mb-0">
+                        <li class="list-inline-item"><a href="#" class="text-white">Terms of Use</a></li>
+                        <li class="list-inline-item"><a href="#" class="text-white">Privacy Policy</a></li>
+                        <li class="list-inline-item"><a href="#" class="text-white">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    </div>
+</body>
+</html>

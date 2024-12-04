@@ -1,0 +1,36 @@
+/* Membuat dialog modal menjadi layar penuh */
+.modal-dialog {
+  max-width: 100vw; /* Atur lebar maksimum menjadi 100% dari lebar viewport */
+  width: 100vw; /* Pastikan lebar modal 100% dari lebar viewport */
+  height: 100vh; /* Atur tinggi menjadi 100% dari tinggi viewport */
+  margin: 0; /* Hilangkan margin default */
+  padding: 0; /* Hilangkan padding default */
+}
+
+/* Pastikan badan modal mengambil sisa tinggi dari modal */
+.modal-body {
+  height: calc(100vh - 200px); /* Sesuaikan tinggi sesuai kebutuhan */
+  overflow-x: auto; /* Izinkan pengguliran horizontal */
+  overflow-y: auto; /* Izinkan pengguliran vertikal */
+}
+
+/* Pastikan tabel cukup lebar untuk memicu pengguliran horizontal */
+.table-responsive {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%; /* Atur lebar tabel menjadi 100% */
+  white-space: nowrap; /* Mencegah sel tabel membungkus */
+}
+
+/* Opsional: Penyesuaian gaya untuk tampilan yang lebih baik */
+.modal-header, .modal-footer {
+  padding: 1rem;
+}
+
+.btn-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+}

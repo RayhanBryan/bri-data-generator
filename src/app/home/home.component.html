@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BRI Data Generator</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            background-image: url('https://png.pngtree.com/background/20230317/original/pngtree-beautiful-background-of-high-rise-buildings-picture-image_2148726.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .login-container {
+            background-color: rgba(255, 255, 255, 0.85); /* Transparansi untuk memperlihatkan latar belakang */
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            width: 850px;
+            display: flex;
+            justify-content: space-between;
+            padding: 40px;
+            max-width: 90%;
+        }
+
+        .login-form {
+            width: 50%;
+            padding-right: 30px;
+        }
+
+        .login-form h2 {
+            font-size: 2.2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-align: left;
+            color: #0033A0; /* Warna biru khas BRI */
+        }
+
+        .login-form p {
+            color: #418beb;
+            font-weight: bold;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        .form-control {
+            margin-bottom: 20px;
+            border-radius: 10px;
+            padding: 15px;
+            font-size: 1rem;
+            border: 1px solid #ced4da;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: #0059FF;
+            box-shadow: 0 0 10px rgba(0, 89, 255, 0.3);
+        }
+
+        .btn-custom {
+            background-color: #368cdd; /* Warna kuning BRI */
+            color: white;
+            border: none;
+            padding: 15px;
+            font-size: 1.1rem;
+            border-radius: 10px;
+            width: 100%;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-custom:hover {
+            background-color: #46a0f4;
+        }
+
+        .login-image {
+            width: 45%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-left: 20px; /* Mengurangi padding di sebelah kiri */
+        }
+
+        .login-image img {
+            max-width: 100%; /* Memastikan gambar tidak lebih lebar dari wadahnya */
+            max-height: 100%; /* Memastikan gambar tidak lebih tinggi dari wadahnya */
+            object-fit: contain; /* Menjaga rasio aspek gambar dan tidak terpotong */
+            border-radius: 0px;
+        }
+
+        .forgot-password {
+            margin-top: 10px;
+            text-align: left;
+        }
+
+        .forgot-password a {
+            color: #0033A0;
+            text-decoration: none;
+        }
+
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .login-container {
+                flex-direction: column;
+                align-items: center;
+                padding: 40px;
+            }
+
+            .login-form, .login-image {
+                width: 100%;
+                text-align: center;
+            }
+
+            .login-image img {
+                width: 100%; /* Menyesuaikan ukuran gambar untuk tampilan mobile */
+                height: auto; /* Memastikan proporsi tetap terjaga */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <!-- Bagian Form Login -->
+        <div class="login-form">
+            <h2>LOGIN</h2>
+            <p>Bank BRI Data Generator</p>
+            <form (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="username" [(ngModel)]="username" name="username" placeholder="Masukkan Username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" [(ngModel)]="password" name="password" placeholder="Masukkan Password" required>
+                </div>
+                <button type="submit" class="btn btn-custom">Login</button>
+            </form>
+            <div class="forgot-password">
+                <a href="#">Forgot Password?</a>
+            </div>
+        </div>
+
+        <!-- Bagian Gambar (Logo BRI) -->
+        <div class="login-image">
+            <img src="https://2.bp.blogspot.com/-lGvmflvsAt0/Vxw8r4FxYLI/AAAAAAAAXCU/_XDIiY_PEz4hpG__6jpxudPBusASFaVgwCLcB/s1600/Logo%2BBRI.png" alt="BRI Logo">
+        </div>
+    </div>
+
+</body>
+</html>
